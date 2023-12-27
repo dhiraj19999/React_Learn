@@ -1,45 +1,46 @@
 import { useReducer } from "react"
 
+/*
+
+useReducer is hook for state managment preferable for complex state management logic.
+const[state,dispatch]=useReducer(reducer,intialstate)
+
+reducer(currentstate,action)
+reducer is fun which accepts two parameter
+dispatch calls reducer function
+reducer accpets action from dispatch and returns new state
+
+*/
 
 
 
-const todoItemreducer=(currTodo,action)=>{
+let intialState=0;
 
-    let NewTodo=currTodo
-    if(action.type=="NEW_ITEM"){
- NewTodo=[
-
-    ...NewTodo,{name:action.payload.name,age:action.payload.age}
-]
-
+  const reducer=(state,{type,payload})=>{
+      
+    switch (type) {
+        case "inc":
+            return state+1
+            case "dec":
+                return state-1
+                
+                case "add payload":
+                return state+payload;
+    
+        default:
+            return state;
     }
 
-    return NewTodo;
-
-}
-
+  }
 
 const Reducer=()=>{
 
-  const[newTodo,dispatchTodo]=useReducer(todoItemreducer,[])
+ const[count,dispatch]= useReducer(reducer,intialState)
     
+
   
   
   
-  const addTodo=(name,age)=>{
-
-const newItemaction={
-    type:"NEW_ITEM",
-    payload:{
-        name,age
-    }
-}
-
-dispatchTodo(newItemaction)
-
-
-console.log(newTodo);
-  }
   
   
   
@@ -47,9 +48,11 @@ console.log(newTodo);
 
        
        <>
-
-<button onClick={()=>addTodo("dhiraj",23)}>Reducer</button>
-
+<h1>Reducer</h1>
+<h2>{count}</h2>
+<button onClick={()=>dispatch({type:"inc"})}>INCRMENT</button>
+<button onClick={()=>dispatch({type:"dec"})}>DECERMENT</button>
+<button onClick={()=>dispatch({type:"add payload",payload:5})}>Payload</button>
 
 
         </>

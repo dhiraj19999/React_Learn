@@ -6,6 +6,8 @@ import Todo from './componets/Todo'
 import { TodoItemsContext } from './store/todo-item'
 import Usememo from './componets/Usmemo'
 import Uscallbak from './Uscallbak'
+import Customhooktest from './Customhooktest'
+import Newusememo from './store/Newusememo'
 function App() {
   const [data, setData] = useState([])
 
@@ -48,6 +50,10 @@ console.log("hello")
 
 
       <Uscallbak/>
+
+      <Customhooktest/>
+
+      <Newusememo/>
     </> 
     </TodoItemsContext.Provider>
   )
