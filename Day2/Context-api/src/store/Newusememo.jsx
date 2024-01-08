@@ -1,12 +1,10 @@
-
 // memorization concept
 
-function add(a,b){
-
-    return a+b;
+function add(a, b) {
+  return a + b;
 }
 
-add(23,12)
+add(23, 12);
 /*
 
 if user call same fuction with same parameter each time when js first time called add fun then it
@@ -17,31 +15,26 @@ if user call same fuction with same parameter each time when js first time calle
 
 */
 
-
-
-
-
-
-import React, { useMemo, useState } from 'react'
+import React, { useMemo, useState } from "react";
 
 function Newusememo() {
-  
-    const[add,setAdd]=useState(0)
-    const[sub,setSub]=useState(100)
-  
-    
-   /* function multiply(){
+  const [add, setAdd] = useState(0);
+  const [sub, setSub] = useState(100);
+
+  /* function multiply(){
   console.log("multiply");
         return add*10;
     } */
-    
-  const multiplication=useMemo(function multiply(){
-    console.log("multiply");
-          return add*10;
-      },[add]) // here we use useMemo so now multiply fun calls only when there is change in add.
 
+  const multiplication = useMemo(
+    function multiply() {
+      console.log("multiply");
+      return add * 10;
+    },
+    [add]
+  ); // here we use useMemo so now multiply fun calls only when there is change in add.
 
-/*
+  /*
 when we call setSub there is change in state so entire componet get rerender with that multiply fun
 also get called agian and agian but there is no such relation bet multiply and setSub becuse mulitply
 fun has relation with add so it totaly depend on add so to avoid calling  multiply fun irespective
@@ -51,19 +44,15 @@ we use usememo to enhanse perfomance of the app to avoid unnessary fun call
 
 */
 
-    return (
-    
-    
- <>
- {multiplication}
- <button onClick={()=>setAdd(add+1)}>ADD</button>
- <span>{add}</span>
- <button  onClick={()=>setSub(sub-1)}>SUB</button>
- <span>{sub}</span>
-
- 
- </>
-  )
+  return (
+    <>
+      {multiplication}
+      <button onClick={() => setAdd(add + 1)}>ADD</button>
+      <span>{add}</span>
+      <button onClick={() => setSub(sub - 1)}>SUB</button>
+      <span>{sub}</span>
+    </>
+  );
 }
 
-export default Newusememo
+export default Newusememo;
